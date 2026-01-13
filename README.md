@@ -1,5 +1,7 @@
 # Wordle Solution
 
+https://chunkberries.github.io/wordle-solution/
+
 Gives you the solution to the NYT's Wordle. Updates automatically every day.
 
 If you are wondering how it works:
