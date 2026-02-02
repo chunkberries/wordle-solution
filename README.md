@@ -1,3 +1,5 @@
+# THIS IS CURRENTLY DOWN!
+
 # Wordle Solution
 
 https://chunkberries.github.io/wordle-solution/
