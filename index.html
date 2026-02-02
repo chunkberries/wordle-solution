@@ -51,26 +51,29 @@
 
   <script>
     const today = new Date().toISOString().split("T")[0];
-    console.log(today)
-    const url = `https://www.nytimes.com/svc/wordle/v2/${today}.json`;
+console.log(today);
+const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(`https://www.nytimes.com/svc/wordle/v2/${today}.json`);
+const apiKey = 'ea9f766f'; // idfc abt this so here it is
 
-    document.getElementById("date").textContent = `Wordle solution for ${today}`;
-
-    fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch Wordle data");
-        }
-        return response.json();
-      })
-      .then(data => {
-        document.getElementById("solution").textContent = data.solution.toUpperCase();
-      })
-      .catch(err => {
-        document.getElementById("solution").innerHTML =
-          `<div class="error">Unable to load solution</div>`;
-        console.error(err);
-      });
+fetch(proxyUrl, {
+  headers: {
+    'Authorization': `Bearer ${apiKey}`
+  }
+})
+.then(response => {
+  if (!response.ok) {
+    throw new Error("Failed to fetch Wordle data");
+  }
+  return response.json();
+})
+.then(data => {
+  document.getElementById("solution").textContent = data.solution.toUpperCase();
+})
+.catch(err => {
+  document.getElementById("solution").innerHTML =
+    `<div class="error">Unable to load solution</div>`;
+  console.error(err);
+});
   </script>
 </body>
 </html>
