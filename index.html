@@ -51,6 +51,7 @@
 
   <script>
     const today = new Date().toISOString().split("T")[0];
+    console.log(today)
     const url = `https://corsproxy.io/?https://www.nytimes.com/svc/wordle/v2/${today}.json`;
 
     document.getElementById("date").textContent = `Wordle solution for ${today}`;
